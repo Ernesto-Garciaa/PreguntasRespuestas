@@ -1,0 +1,39 @@
+﻿@model LoginModel
+@{
+    ViewBag.Title = "Iniciar";
+}
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h3 class="text-center">Iniciar sesión</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="nombre">Usuario:</label>
+                            <input asp-for="nombre" class="form-control" placeholder="Ingresa tu usuario" type="text" />
+                            <span asp-validation-for="nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasenia">Contraseña:</label>
+                            <input asp-for="contrasenia" class="form-control" placeholder="Ingresa tu contraseña" type="password" />
+                            <span asp-validation-for="contrasenia" class="text-danger"></span>
+                        </div>
+                        @if (ViewData["Error"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                @ViewData["Error"]
+                            </div>
+                        }
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+﻿@model UsuarioModel
+
+@{
+    ViewBag.Title = "Registrarse";
+}
+
+<form method="post">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">@ViewBag.Title</h2>
+                        <div class="mb-3">
+                            <input asp-for="idTipoUsuario" type="hidden" value="2" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="nombre">Usuario</label>
+                            <input asp-for="nombre" class="form-control" placeholder="Ingrese su nombre de usuario" type="text" id="nombre" />
+                            <span asp-validation-for="nombre" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input asp-for="email" class="form-control" placeholder="Ingrese su dirección de email" type="email" id="email" />
+                            <span asp-validation-for="email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="contrasenia">Contraseña</label>
+                            <input asp-for="contrasenia" class="form-control" placeholder="Ingrese su contraseña" type="password" id="contrasenia" />
+                            <span asp-validation-for="contrasenia" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </div>
+                        @if (ViewData["Error"] != null)
+                        {
+                            <div class="alert alert-danger mt-3">
+                                @ViewData["Error"]
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

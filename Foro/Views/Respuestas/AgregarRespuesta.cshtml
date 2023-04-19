@@ -1,0 +1,21 @@
+﻿@model Respuesta
+
+<h2 class="text-center">Responder Pregunta</h2>
+
+<form method="post" asp-action="AgregarRespuesta">
+
+    <div class="form-group">   
+        <input type="hidden"  class="form-control" id="IdPregunta" name="IdPregunta" value="@ViewBag.idPregunta" required>
+    </div>
+    <div class="form-group">
+        <input type="hidden"  class="form-control" id="idUsuario" name="idUsuario" value="@ViewBag.idUsuario" required>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" id="respuesta" name="respuesta" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Fecha">Fecha</label>
+        <input type="date" class="form-control" id="Fecha" name="Fecha" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Insertar</button>
+</form>

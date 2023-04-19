@@ -1,0 +1,79 @@
+﻿@model List<PreguntaModicarModel>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h2 class="card-header text-center text-primary">FORO</h2>
+                <div class="card-body">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-success" id="btnAgregarPregunta" onclick="agregarPregunta()">Agregar pregunta</button>
+                    </div>
+                    <br />
+                    <div class="d-flex justify-content-end">                     
+                        <a class="nav-link text-dark btn btn-success" asp-area="" asp-controller="Respuestas" asp-action="ConsultarRespuestas">Respuestas</a>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="Logout">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                    </div>
+
+    
+                        <h1 class="display-4 text-center">@ViewData["IdUsuario"]</h1>
+                    @if (Model.Count > 0)
+                    {
+                        <table class="table table-hover mt-4">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Título</th>
+                                    <th>Pregunta</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var pregunta in Model)
+                                {
+                                    <tr>
+                                        <td>@pregunta.NombreUsuario</td>
+                                        <td>@pregunta.TituloPregunta</td>
+                                        <td>@pregunta.ContenidoPregunta</td>
+                                        <td>@pregunta.FechaPregunta.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            @if (@pregunta.estado == "true")
+                                            {
+                                                <span class="badge bg-success">Activa</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">Inactiva</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if(@pregunta.estado == "true"){
+                                                <a href="@Url.Action("AgregarRespuesta", "Respuestas", new { idUsuario = pregunta.IdUsuario, idPregunta = pregunta.idPregunta })" class="btn btn-primary">Responder</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-center">No hay preguntas para mostrar.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function agregarPregunta() {
+        window.location.href = "@Url.Action("InsertarPregunta", "Preguntas")";
+    }
+</script>

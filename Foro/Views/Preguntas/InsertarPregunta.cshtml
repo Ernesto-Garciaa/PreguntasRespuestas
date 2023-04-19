@@ -1,0 +1,28 @@
+﻿@model PreguntaModel
+
+<form method="post"  asp-action="InsertarPregunta">
+    <div class="form-group">
+        <label for="IdUsuario">ID Usuario</label>
+        <input type="number" class="form-control" id="IdUsuario" name="IdUsuario" required>
+    </div>
+    <div class="form-group">
+        <label for="Titulo">Título</label>
+        <input type="text" class="form-control" id="Titulo" name="Titulo" required>
+    </div>
+    <div class="form-group">
+        <label for="Contenido">Contenido</label>
+        <textarea class="form-control" id="Contenido" name="Contenido" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Fecha">Fecha</label>
+        <input type="date" class="form-control" id="Fecha" name="Fecha" required>
+    </div>
+    <div class="form-group">
+        <label for="Estado">Estado</label>
+        <select class="form-control" id="Estado" name="Estado" required>
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Insertar</button>
+</form>
